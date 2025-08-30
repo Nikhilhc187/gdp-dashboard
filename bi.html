@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Chandana 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 40px;
+      text-align: center;
+      width: 400px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ffcc70;
+      text-shadow: 0px 0px 20px #ff4081, 0px 0px 30px #ffcc70;
+    }
+
+    p {
+      font-size: 16px;
+      color: #f1f1f1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: red;
+      top: 0;
+      border-radius: 50%;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff9a9e, #ff4081);
+      animation: floatUp 8s infinite;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      width: 2px;
+      height: 30px;
+      background: white;
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-300px) scale(1.1); }
+      100% { transform: translateY(-600px) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" onclick="celebrate()">
+    <h1>🎂 Happy Birthday Chandana (Devil) 🎂</h1>
+    <p id="message">Click this card for a magical surprise 🎉</p>
+    <p id="quote" class="hidden">✨ "Devil by name, Angel at heart – Chandana, may your birthday be as bright, bold, and beautiful as you are! Keep shining 🔥✨" </p>
+  </div>
+
+  <script>
+    function celebrate() {
+      document.getElementById("message").classList.add("hidden");
+      document.getElementById("quote").classList.remove("hidden");
+
+      // Confetti burst
+      for (let i = 0; i < 80; i++) {
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+
+      // Balloons rising
+      for (let i = 0; i < 5; i++) {
+        let balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.background = `radial-gradient(circle at 30% 30%, hsl(${Math.random()*360}, 70%, 70%), hsl(${Math.random()*360}, 80%, 40%))`;
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 8000);
+      }
+    }
+  </script>
+
+</body>
+</html>
